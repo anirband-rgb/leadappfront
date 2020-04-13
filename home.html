@@ -1,0 +1,158 @@
+<div class="header header-fixed header-logo-app">
+    <a href="#" class="back-button header-title header-subtitle">Dashboard</a>
+    <a href="#" class="back-button header-icon header-icon-1"><i class="fas fa-chevron-left"></i></a>
+    <a href="#" class="header-icon header-icon-2" data-menu="menu-navigation"><i class="fas fa-bars"></i></a>
+</div>
+<div id="footer-menu" class="footer-menu-5-icons footer-menu-style-1 global-transition-effect" style="background:transparent;box-shadow: none;">
+    <a href="#!add_lead2" class="button bottom-0 font-20 top-0 button bg-blue2-dark" id="add_lead"><i class="fa fa-plus"></i></a>
+</div>          
+<div class="page-content header-clear">
+    <div class="content top-10 bottom-10">
+        <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%;position:relative">
+            <i class="fa fa-calendar"></i>&nbsp;
+            <span></span> <i class="fa fa-caret-down"></i>
+        </div>
+    </div>  
+    <div class="content box_parent">
+        <div class="one-third">
+            <a href="#!leaddetails">
+                <div class="content">
+                    <div class="bottom-15 text-center total_student bg-red1-light">
+                        <h3 class="capitalize font-30 only_desk">
+                            <i class="fa fa-users"></i>
+                        </h3>
+                        <h3 class="capitalize  only_mobile">total lead</h3>
+                        <p class="font-18 bold color-white bottom-10">{{totallead}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="one-third">
+            <a href="#!leaddetails">
+                <div class="content">
+                    <div class="bottom-15 bg-yellow1-dark text-center new_student">
+                        <h3 class="capitalize font-30 only_desk">
+                            <i class="fa fa-users"></i>
+                        </h3>
+                        <h3 class="capitalize only_mobile">new lead</h3>
+                        <p class="font-18 bold color-white bottom-10">{{totallead_new}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="one-third last-column">
+            <a href="#!leaddetails">
+                <div class="content">
+                    <div class="bottom-15 bg-orange-dark text-center total_fees">
+                        <h3 class="capitalize font-30 only_desk">
+                            <i class="fa fa-rupee-sign"></i>
+                        </h3>
+                        <h3 class="capitalize only_mobile">today followup </h3>
+                        <p class="font-18 bold color-white bottom-10">{{todayfolowup}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="clear"></div>
+        <div class="one-third">
+            <a href="#!leaddetails">
+                <div class="content">
+                    <div class="bottom-15 text-center total_course bg-green2-light">
+                        <h3 class="capitalize font-30 only_desk">
+                            <i class="fa fa-graduation-cap"></i>
+                        </h3>
+                        <h3 class="capitalize only_mobile">junk lead</h3>
+                        <p class="font-18 bold color-white bottom-10">{{totaljunk}}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="one-third">
+            <a href="#!leaddetails">
+                <div class="content">
+                    <div class="bottom-15 bg-pink1-dark text-center total_addmission">
+                        <h3 class="capitalize font-30 only_desk">
+                            <i class="fa fa-user-graduate"></i>
+                        </h3>
+                        <h3 class="capitalize only_mobile">dues followup</h3>
+                        <p class="font-18 bold color-white bottom-10">5</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="one-third last-column">
+            <a href="#!leaddetails">
+                <div class="content">
+                    <div class="bottom-15 bg-magenta2-dark text-center today_addmission">
+                        <h3 class="capitalize font-30 only_desk">
+                            <i class="fa fa-user-graduate"></i>
+                        </h3>
+                        <h3 class="capitalize only_mobile">upcoming followup</h3>
+                        <p class="font-18 bold color-white bottom-10">8 </p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="divider divider-margins bottom-10"></div>
+    <div class="content bottom-10">
+        <h5 class="bolder">Latest lead</h5>
+    </div>
+    <div class="content" ng-repeat="leadnew in leadlist">
+        <div class="content-box bg-white data_list">
+            <p class="top-0 bottom-0 font-12">{{leadnew.lead_gen_date |date:'dd MMM yyyy '}}</p>
+            <div class="clear"></div>
+            <h5 class="bolder float-left capitalize">{{leadnew.contact_person}}</h5>
+            <h5 class="bolder float-right">{{leadnew.mobile}}</h5>
+            <div class="clear"></div>
+           
+            
+           
+            <button type="button" class="button button-m bg-blue2-dark bottom-0" style="visibility: hidden;"><i class="fa fa-thumbs-up"></i></button>
+            <button type="button" class="button button-m bg-blue2-dark bottom-0" ng-click='callLead(leadnew.mobile)'><i class="fa fa-phone"></i></button>
+            <button class="float-right button button-xs bg-blue2-dark bottom-0" ng-click="leaddetails(leadnew.id)"><i class="fa fa-eye"></i></button>
+        </div>
+    </div>
+ 
+
+</div>
+           
+    <div id="menu-navigation"
+         class="menu-box"
+         data-menu-type="menu-box-left"
+         data-menu-width="280"
+         data-menu-load="menu-sidebar-left.html"
+         data-menu-active="nav-home"
+         data-menu-effect="menu-reveal">
+    </div> 
+    <div class="menu-hider"></div>
+<script src="./assets/js/jquery.js"></script>
+<script src="./assets/js/plugins.js"></script>
+<script src="./assets/js/custom.js"></script>
+<script src="./assets/js/moment.min.js"></script>
+<script src="./assets/js/daterangepicker.min.js"></script>
+<script>
+$(function() {
+    var start = moment().subtract(29, 'days');
+    var end = moment();
+    function cb(start, end) {
+        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+    }
+    $('#reportrange').daterangepicker({
+        startDate: start,
+        endDate: end,
+        ranges: {
+           'Today': [moment(), moment()],
+           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+           'This Month': [moment().startOf('month'), moment().endOf('month')],
+           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        }
+    }, cb);
+    cb(start, end);
+});
+
+</script>
+    

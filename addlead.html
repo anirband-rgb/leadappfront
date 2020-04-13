@@ -1,0 +1,156 @@
+<style>
+    .call{
+        position: ABSOLUTE;
+    right: 16px;
+    top: 1px;
+    }
+    .call span i {
+    font-size: 21px;
+    padding-right: 20px;
+    color: green;
+}
+</style>
+<div class="header header-fixed header-logo-app">
+    <a href="#" class="back-button header-title header-subtitle">Add Lead</a>
+    <a href="#" class="back-button header-icon header-icon-1"><i class="fas fa-chevron-left"></i></a>
+    <a href="#!filter" class="header-icon header-icon-3"><i class="fas fa-filter"></i></a>
+	<a href="#" class="header-icon header-icon-2" data-menu="menu-navigation"><i class="fas fa-bars"></i></a>
+</div>
+<div class="page-content header-clear">
+    <div class="content top-10 bottom-10">
+        <h5 class="bolder">Add Lead</h5>
+        <div class="call">
+            <span ng-click="callLead(lead.mobile)"><i class="fa fa-phone" aria-hidden="true"></i></span>
+            <span><i class="fa fa-comments" aria-hidden="true"></i></span>
+            
+        </div>
+    </div>
+    <div class="content">
+        <div class="content-box bg-white add_lead_div">
+            <div class="tab-controls tab-animated tabs-large tabs-rounded" data-tab-items="2" data-tab-active="bg-green1-dark">
+                <a id="addc"  data-tab="tab-8" class="bg-green1-dark color-white" style="width: 50%;" ng-click="addleaddiv()">Add Lead</a>
+                <a id="updatec" data-tab="tab-9" style="width: 50%;" ng-click="updateleaddiv()">Lead Update</a>
+            </div>
+            <div class="clear bottom-15"></div>
+            <div class="tab-content" id="tab-8" style="display: block;">
+                <form method="post" name="myform" class="lead_form">
+                    <div class="input-style has-icon input-style-1 input-required bottom-10">
+                        <span class="input-style-1-inactive">Full Name</span>
+                        <input type="text" placeholder="Full Name" name="name" ng-model="lead.name">
+                        <p class="color-red1-dark error" id="name_error">Please fill full name!</p>
+                    </div>  
+                    <div class="input-style has-icon input-style-1 input-required bottom-10">
+                        <span  class="input-style-1-inactive">Locality</span>
+                        <input type="text" placeholder="Locality" name="locality" ng-model="lead.address">
+                        <p class="color-red1-dark error" id="loca_error">Please fill locality!</p>
+                    </div>
+                    <div class="input-style has-icon input-style-1 input-required bottom-10">
+                        <span  class="input-style-1-inactive">Mobile</span>
+                        <input type="text" placeholder="Mobile" name="mobile" ng-model="lead.mobile">
+                        <p class="color-red1-dark error" id="mob_error">Please fill correct Mobile number!</p>
+                    </div>
+                    <div class="input-style has-icon input-style-1 input-required bottom-10">
+                        <span  class="input-style-1-inactive">Other Number</span>
+                        <input type="text" placeholder="Other Number" name="phone" ng-model="lead.phone">
+                        <p class="color-red1-dark error" id="phone_error">Please fill correct Other number!</p>
+                    </div>
+                    <div class="input-style input-style-1 input-required">
+                        <span>Select Lead Source</span>
+                        <em><i class="fa fa-angle-down"></i></em>
+                        <select name="lead_sourse" ng-model="lead.lead_source" ng-init="lead.lead_source='Select Lead Source'">
+                            <option value="" disabled="" selected="">Select Lead Source</option>
+                            <option ng-repeat="source in sourselist" value="{{source.source_id}}">{{source.source_name}}</option>
+                            
+                        </select>
+                        <p class="color-red1-dark error" id="lead_error">Please select lead source!</p>
+                    </div>
+                    
+                    <div class="input-style input-style-1 input-required">
+                        <span>Select Lead Status</span>
+                        <em><i class="fa fa-angle-down"></i></em>
+                        <select name="lead_sourse" ng-model="lead.lead_status" ng-init="lead.lead_status='Select Lead status'">
+                            <option value="" disabled="" selected="">Select Lead status</option>
+                            <option ng-repeat="status in statuslist" value="{{status.status_id}}">{{status.status_name}}</option>
+                            
+                        </select>
+                        <p class="color-red1-dark error" id="lead_error">Please select lead source!</p>
+                    </div>
+                    <div class="input-style has-icon input-style-1 input-required bottom-10">
+                        <span  class="input-style-1-inactive">E-mail</span>
+                        <input type="email" placeholder="E-mail" name="email" ng-model="lead.email">
+                        <p class="color-red1-dark error" id="email_error">Please fill correct email!</p>
+                    </div>
+                    <div class="input-style input-style-1 input-required">
+                        <span>Select Course</span>
+                        <em><i class="fa fa-angle-down"></i></em>
+                        <select name="course" ng-model="lead.product" ng-init="lead.product='Select Course'">
+                            <option value="" disabled="" selected="">Select Course</option>
+                            <option ng-repeat="course in courselist" value="{{course.course_id}}">{{course.course_name}}</option>
+                        </select>
+                        <p class="color-red1-dark error" id="course_error">Please select course!</p>
+                    </div>
+                    <div class="input-style has-icon input-style-1 input-required bottom-10">
+                        <span  class="input-style-1-inactive">University</span>
+                        <input type="text" placeholder="University" name="university" ng-model="lead.university">
+                        <p class="color-red1-dark error" id="uni_error">Please fill University name!</p>
+                    </div>
+                   
+                    <div class="input-style input-style-1 input-required">
+                        <span>Assign_to</span>
+                        <em><i class="fa fa-angle-down"></i></em>
+                        <select name="telecaller" ng-model="lead.telecaller_id" ng-init="lead.telecaller_id='Select Telecaller'">
+                            <option >Select Telecaller</option>
+                           
+                             <option ng-repeat="user in userlist" value="{{user.id}}">{{user.name}}</option>
+                        </select>
+                        <p class="color-red1-dark error" id="tele_error">Please select telecaller!</p>
+                    </div>
+                    <div class="input-style input-style-1 top-10 text-center">
+                        <button class="button button-full button-m button-round-small bg-highlight btn_gradient top-10 bottom-10 my_btn" onclick="return validation()">ADD Lead</button>
+                    </div>
+                </form>
+            </div>
+            <div class="tab-content" id="tab-9">
+                <form method="post" name="myform1" class="lead_form">
+                    <div class="input-style has-icon input-style-1 input-required bottom-10">
+                        <span class="input-style-1-inactive">Remarks</span>
+                        <textarea ng-model='remarks' type="name" placeholder="Remarks" name="remark"></textarea>
+                        <p class="color-red1-dark error" id="remark_error">Please fill remarks!</p>
+                    </div>  
+                    <div class="input-style has-icon input-style-1 input-required bottom-10">
+                        <span  class="input-style-1-inactive">Date</span>
+                        <input ng-model='followupDate' type="text" name="birthday" id="datepicker" >
+                        <p class="color-red1-dark error" id="date_error">Please fill date!</p>
+                    </div>
+
+                    <div class="input-style has-icon input-style-1 input-required bottom-10">
+                        <span  class="input-style-1-inactive">Date</span>
+                        <input type="text" ng-model='time' name="birthday" id="datepickertime" >
+                        <p class="color-red1-dark error" id="date_error">Please fill date!</p>
+                    </div>
+                    
+                    <div class="input-style has-icon input-style-1 input-required bottom-10">
+                        <select name="lead_sourse" ng-model="status" ng-init="lead.lead_status='Select Lead status'">
+                            <option value="" disabled="" selected="">Select Lead status</option>
+                            <option ng-repeat="status in statuslist" value="{{status.status_id}}">{{status.status_name}}</option>
+                            
+                        </select>
+                        <p class="color-red1-dark error" id="status_error">Please fill Lead status!</p>
+                    </div>
+                    <div class="input-style input-style-1 top-10 text-center">
+                        <button ng-click='updateRemark()' class="button button-full button-m button-round-small bg-highlight btn_gradient top-10 bottom-10 my_btn" onclick="return validation2()">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>  
+<div id="menu-navigation"
+    class="menu-box"
+    data-menu-type="menu-box-left"
+    data-menu-width="280"
+    data-menu-load="menu-sidebar-left.html"
+    data-menu-active="nav-add-lead"
+    data-menu-effect="menu-reveal">
+</div> 
+<div class="menu-hider"></div>

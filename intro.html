@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<title>Leadsoft</title>
+<link rel="icon" href="images/small_logo.png" type="image/png" sizes="100%x100%">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="_manifest.json" data-pwa-version="set_by_pwa.js">
+<link rel="stylesheet" type="text/css" href="./assets/styles/style.css">
+<link rel="stylesheet" type="text/css" href="./assets/styles/framework.css">
+<link rel="stylesheet" type="text/css" href="./assets/fonts/css/fontawesome-all.min.css">
+<style>
+    .myfixed {
+        text-transform: uppercase;
+        padding: 10px;
+        position: fixed;
+        width: 100%;
+        bottom: -1px;
+        z-index: 2;
+        color:#fff;
+        font-size:16px;
+    }
+</style> 
+</head>
+<body class="theme-light" data-highlight="blue2">
+<div class="preloader"><div><!--Preloader Generated Here--></div></div>
+<div id="page">
+    <div class="page-content">           
+        <div class="cover-slider owl-carousel" style="position: fixed;">
+            <div data-height="cover-header" class="caption bottom-0">
+                <div class="caption-center">
+                    <h1 class="center-text color-white bottom-30"><i class="fa fa-bolt color-yellow1-dark fa-4x"></i></h1>
+                    <h1 class="center-text color-white bolder font-30">Blazing Fast</h1>
+                    <p class="center-text color-white bottom-30 under-heading">Speed on Mobile is Essential</p>
+                    <p class="boxed-text-large color-white bottom-40 opacity-70">
+                        When we build for your Mobile Device, Speed is the pillar every feature is built upon.
+                    </p>
+                </div>
+                <div class="caption-overlay bg-black opacity-80"></div>
+                <div class="caption-bg" style="background-image:url(./assets/images/11t.jpg)"></div>
+                <div class="caption-bg"></div>
+            </div>      
+            <div data-height="cover-header" class="caption bottom-0">
+                <div class="caption-center">
+                    <h1 class="center-text color-white bottom-30"><i class="fa fa-brush color-red2-dark fa-4x"></i></h1>
+                    <h1 class="center-text color-white bolder font-30">Styled Flexibly</h1>
+                    <p class="center-text color-white bottom-30 under-heading">Add your Style to make it yours.</p>
+                    <p class="boxed-text-large color-white bottom-40 opacity-70">
+                        Our code is built with flexibility in mind, to make it super easy for you to add your style.
+                    </p>
+                </div>
+                <div class="caption-overlay bg-black opacity-80"></div>
+                <div class="caption-bg" style="background-image:url(./assets/images/11t.jpg)"></div>
+                <div class="caption-bg"></div>
+            </div>       
+            <div data-height="cover-header" class="caption bottom-0">
+                <div class="caption-center">
+                    <h1 class="center-text color-white bottom-30"><i class="fas fa-dollar-sign color-green1-dark fa-4x"></i></h1>
+                    <h1 class="center-text color-white bolder font-30">Bang for Buck</h1>
+                    <p class="center-text color-white bottom-30 under-heading">Priced Fairly with Powerful Quality.</p>
+                    <p class="boxed-text-large color-white bottom-40 opacity-70">
+                        Premium Quality at a Fair Price. We don't overcharge you for anything.
+                    </p>
+                </div>
+                <div class="caption-overlay bg-black opacity-80"></div>
+                <div class="caption-bg" style="background-image:url(./assets/images/11t.jpg)"></div>
+                <div class="caption-bg"></div>
+            </div>            
+            
+            
+        </div>
+         <div class="myfixed" style="width:50%;left:0px;z-index: 99">
+            <a href="login.html" class="float-left skip_button color-white" id="skipp">SKIP</a>
+        </div>
+        <div class="myfixed proceed"  style="display:none;width:50%;right:0px;z-index: 99">
+            <a href="login.html" class="float-right skip_button color-white"  id="proceed">Proceed</a>
+        </div>
+    </div>
+    <div class="menu-hider"></div>
+</div>
+        
+<script src="./assets/js/jquery.js"></script>
+<script src="./assets/js/plugins.js"></script>
+<script src="./assets/js/custom.js"></script>
+<script src="./assets/js/moment.min.js"></script>
+<script src="./assets/js/daterangepicker.min.js"></script>
+<script>
+   $(document).ready(function(){
+        $('.cover-slider').on('changed.owl.carousel', function(e) {
+            let count = $('.owl-item');
+            if((e.page.index==-1)){
+                $('.proceed').css({
+                    'display':'none'
+                });
+            }else if((e.page.index+1)>=e.page.count){
+                $('.proceed').css({
+                    'display':'block'
+                });
+            }else{
+                $('.proceed').css({
+                    'display':'none'
+                });
+            }
+        });
+   });
+</script>
+</body>
+</html>

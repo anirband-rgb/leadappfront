@@ -1,0 +1,100 @@
+<div class="header header-fixed header-logo-app">
+        <a href="#" class="back-button header-title header-subtitle">Add Lead</a>
+        <a href="#" class="back-button header-icon header-icon-1"><i class="fas fa-chevron-left"></i></a>
+        <button class="header-icon header-icon-2" onclick="return validation()"><i class="fas fa-check"></i></button>
+	</div>
+    <div class="page-content header-clear">
+        <div class="content top-0">
+            <form method="post" name="myform" class="login_form" action="home.html">
+                <h1 class="font-18 color-black uppercase">lead information</h1>
+                <label class="bg-red1-dark label_pic" style="padding:10px;">
+                    <i class="fa fa-pen"></i>
+                    <input type='file' id="file-input" name="file" style="display: none;">
+                    <p class="color-red1-dark error" id="img_error">Please upload any image!</p>
+                </label>
+                <div id='img_contain bottom-50'>
+                  <img id="image-preview" align='middle'src="./assets/images/small_logo.png" alt="your image">
+                </div>
+                <h1 class="font-18 color-black uppercase top-20 ">lead information</h1>
+                <div class="input-style has-icon input-style-1 input-required bottom-20">
+                    <input type="text" placeholder="Company" name="company">
+                    <p class="color-red1-dark error" id="company_error">Please company!</p>
+                </div>
+                <div class="input-style has-icon input-style-1 input-required bottom-20">
+                    <input type="text" placeholder="First Name" name="name">
+                    <p class="color-red1-dark error" id="name_error">Please fill Name!</p>
+                </div> 
+                <div class="input-style has-icon input-style-1 input-required bottom-20">
+                    <input type="text" placeholder="Last Name" name="lname">
+                    <p class="color-red1-dark error" id="lname_error">Please fill Name!</p>
+                </div>
+                <div class="input-style has-icon input-style-1 input-required bottom-20">
+                    <input type="text" placeholder="E-mail" name="email">
+                    <p class="color-red1-dark error" id="email_error">Please fill correct email!</p>
+                </div>
+                <div class="input-style has-icon input-style-1 input-required bottom-20">
+                    <input type="number" placeholder="Phone" name="phone" onkeypress="if(this.value.length==10)return false;">
+                    <p class="color-red1-dark error" id="phone_error">Please fill correct Phone!</p>
+                </div>
+            </form>
+        </div>
+        <div class="clear"></div>
+    </div>   
+    <div id="menu-navigation"
+        class="menu-box"
+        data-menu-type="menu-box-left"
+        data-menu-width="280"
+        data-menu-load="menu-sidebar-left.html"
+        data-menu-active="nav-addlead2"
+        data-menu-effect="menu-reveal">
+    </div> 
+    <div class="menu-hider"></div>
+<script src="scripts/jquery.js"></script>
+<script src="scripts/plugins.js"></script>
+<script src="scripts/custom.js"></script>
+<script>
+function validation(){
+    var company = document.myform.company.value;
+    var name = document.myform.name.value;
+    var lname = document.myform.lname.value;
+    var emailID = document.myform.email.value;
+    atpos = emailID.indexOf("@");
+    dotpos = emailID.lastIndexOf(".");
+    var phone = document.myform.phone.value;
+    $('input').keypress(function(){
+        $('#company_error, #name_error, #lname_error, #email_error, #phone_error').hide(150);
+    });
+    if(company==""){
+        $('#company_error').show(150);
+        return false;
+    }else if(name==""){
+        $('#name_error').show(150);
+        return false;
+    }else if(lname==""){
+        $('#lname_error').show(150);
+        return false;
+    }else if(atpos < 1 || ( dotpos - atpos < 2 )){
+        $('#email_error').show(150);
+        return false;
+    }else if(phone.length!=10){
+        $('#phone_error').show(150);
+        return false;
+    }else{
+        return true;
+    }
+}
+function readURL(input) {
+    if(input.files && input.files[0]){
+        var reader = new FileReader();
+        reader.onload = function(e){
+            $('#image-preview').attr('src', e.target.result);
+            $('#image-preview').hide();
+            $('#image-preview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#file-input").change(function() {
+  readURL(this);
+});
+</script>

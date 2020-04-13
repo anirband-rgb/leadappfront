@@ -1,0 +1,177 @@
+<style>
+    input{
+        color: #818181;
+    }
+</style>
+<div class="header header-fixed header-logo-app">
+        <a href="#" class="back-button header-title header-subtitle">filter lead</a>
+        <a href="#" class="back-button header-icon header-icon-1"><i class="fas fa-chevron-left"></i></a>
+		<a href="#" class="header-icon header-icon-2" data-menu="menu-navigation"><i class="fas fa-bars"></i></a>
+	</div>         
+    <div class="page-content header-clear">
+        <div class="content bottom-10 top-10">
+        </div>
+        <div class="content filter_div">
+            <form method="post" name="myform">
+                <div class="one-half">
+                    <div class="content bottom-5">
+                        <div class="input-style input-style-1 input-required">
+                            <em><i class="fa fa-angle-down"></i></em>
+                            <select name="status">
+                                <option value="" disabled="" selected="">Select Status</option>
+                                <option value="1">junk lead</option>
+                                <option value="2">RNR</option>
+                                <option value="3">Admission done</option>
+                            </select>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="one-half last-column">
+                    <div class="content bottom-5">
+                        <div class="input-style input-style-1 input-required">
+                            <em><i class="fa fa-angle-down"></i></em>
+                            <select name="lead_stauts">
+                                <option value="" disabled="" selected="">Select lead</option>
+                                <option value="1">Just Dial</option>
+                                <option value="2">Sulekha</option>
+                                <option value="3">Quiker</option>
+                                <option value="4">Website</option>
+                                <option value="5">Facebook</option>
+                            </select>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="content bottom-0">
+                    <p class="color-red1-dark error bottom-0" id="status_error">Please Select Status!</p>
+                    <p class="color-red1-dark error bottom-0" id="lead_error">Please Select Lead!</p>
+                </div>
+                <div class="clear"></div>
+                <div class="one-half">
+                    <div class="content bottom-5">
+                        <div class="input-style input-style-1 input-required">
+                            <em><i class="fa fa-angle-down"></i></em>
+                            <select name="assign">
+                                <option value="" disabled="" selected="">Select Assign to</option>
+                                <option value="1">Roushan Kumar</option>
+                                <option value="2">Manish Kumar</option>
+                                <option value="3">Poornima</option>
+                            </select>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="one-half last-column">
+                    <div class="content bottom-5">
+                        <div class="input-style input-style-1 input-required">
+                            <em><i class="fa fa-angle-down"></i></em>
+                            <select name="Course">
+                                <option value="" disabled="" selected="">Select Course</option>
+                                <option value="1">MA</option>
+                                <option value="2">BA</option>
+                                <option value="3">BBA</option>
+                                <option value="4">MS.c</option>
+                                <option value="5">MCA</option>
+                            </select>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="content bottom-0">
+                    <p class="color-red1-dark error bottom-0" id="assing_error">Please Select Assign!</p>
+                    <p class="color-red1-dark error bottom-0" id="course_error">Please Select Course!</p>
+                </div>
+                <!-- <div class="content bottom-5">
+                    <div class="input-style has-icon input-style-1 input-required bottom-0">
+                        <input type="text" name="search" placeholder="Search you lead">
+                        <p class="color-red1-dark error" id="search_error">Please type any lead name!</p>
+                    </div>
+                </div> -->
+                <div class="clear"></div>
+                <div class="one-half">
+                    <div class="content bottom-5">
+                        <div class="input-style has-icon input-style-1 input-required bottom-10">
+                            <input type="text" name="lead">
+                            <p class="color-red1-dark error" id="date_error1">Please fill Lead Datre!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="one-half last-column">
+                    <div class="content bottom-5">
+                        <div class="input-style has-icon input-style-1 input-required bottom-10">
+                            <input type="text" name="dues">
+                            <p class="color-red1-dark error" id="date_error2">Please fill Lead Date!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="content">
+                    <div class="input-style has-icon input-style-1 input-required bottom-10">
+                        <button class="button button-full button-m button-round-small bg-highlight btn_gradient top-10 bottom-10 my_btn" onclick="return validation2()">apply</button>
+                    </div>
+                </div>
+           </form> 
+        </div>
+    </div>
+    <div id="menu-navigation"
+        class="menu-box"
+        data-menu-type="menu-box-left"
+        data-menu-width="280"
+        data-menu-load="menu-sidebar-left.html"
+        data-menu-active="nav-lead-report"
+        data-menu-effect="menu-reveal">
+    </div> 
+    <div class="menu-hider"></div>
+    <script src="scripts/jquery.js"></script>
+    <script src="scripts/plugins.js"></script>
+    <script src="scripts/custom.js"></script>
+<script>
+function validation2(){
+    let status = document.myform.status.value;
+    let lead_stauts = document.myform.lead_stauts.value;
+    let assign = document.myform.assign.value;
+    let Course = document.myform.Course.value;
+    let lead = document.myform.lead.value;
+    let dues = document.myform.dues.value;
+    $('input').keypress(function(){
+        $('#search_error, #date_error1, #date_error2').hide(150);
+    });
+    $('select').change(function(){
+        $('#status_error, #lead_error, #assing_error, #course_error').hide(150);
+    });
+    if(status==""){
+        $('#status_error').show(150);
+        return false;
+    }else if(lead_stauts==""){
+        $('#lead_error').show(150);
+        return false;
+    }else if(assign==""){
+        $('#assing_error').show(150);
+        return false;
+    }else if(Course==""){
+        $('#course_error').show(150);
+        return false;
+    }else if(lead==""){
+        $('#date_error1').show(150);
+        return false;
+    }else if(dues==""){
+        $('#date_error2').show(150);
+        return false;
+    }else{
+        return true;
+    }
+}
+$(function() {
+  $('input[name="lead"], input[name="dues"]').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: true,
+    minYear: 1901,
+    maxYear: parseInt(moment().format('YYYY'),10)
+  }, function(start, end, label) {
+    var years = moment().diff(start, 'years');
+  });
+});
+</script>
